@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        #by-querySelector{
+            color: brown;
+        }
+        p{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript:</h1>
+    <h2 id="first">Document Object Model (DOM) </h2>
+    <h3 id="second"></h3>
+    <h4 id="by-querySelector"></h4>
+    <p class="para" id="paraId"></p>
+    <p class="para"></p>
+    <p class="para"></p>
+    <article class="article1">
+        <h2> This is a article section.</h2>
+    </article>
+    <a href="eventhandler.html">Event Handler</a>
+
+
+
+
+<script>
+    document.getElementsByTagName('h1')[0].style.color = "green";
+
+    console.log("javaScript");
+
+    alert("JavaScript");   
+
+    console.log(document.body);
+
+    console.log(document.getElementsByTagName('h1')[0]);
+
+    var dom = document.getElementById("first");
+    dom.style.color="blue";
+    dom.style.fontSize = "20px";
+    
+    console.log(dom.innerHTML);
+
+    document.getElementById('second').innerHTML = `This Text Comes Form JavaScript`;
+
+    document.querySelector("#by-querySelector").innerHTML= 'Accessed By Query Selector!';
+
+    document.querySelectorAll(".para")[0].style.fontSize = "24px";
+
+    var para = document.querySelectorAll(".para");
+    for(let i=0; i<para.length; i++){
+        var eachPara = para[i];
+        eachPara.innerHTML = 'Paragraph' + (i+1);
+        eachPara.style.background = "red";
+        eachPara.style.color ="white";
+    }
+
+    document.querySelector("#paraId").setAttribute('title', 'This is title generated from JavaScript Code');
+
+    var article = document.getElementsByClassName("article1")[0];
+    const newParagraph = document.createElement('p');
+    newParagraph.setAttribute('id',"articlePara");
+    article.appendChild(newParagraph);
+    var articlePara = document.getElementById("articlePara");
+    newParagraph.innerHTML = "This Paragraph Generated From Create Element Function.";
+    articlePara.style.width= "100%";
+    console.log(article.childNodes);
+    console.log("short Break");
+    console.log(articlePara.parentNode);
+
+</script>
+</body>
+</html>

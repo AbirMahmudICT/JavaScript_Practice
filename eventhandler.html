@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handler</title>
+</head>
+<body>
+    <h1 onmouseout="console.log('You can see me in the console section, Thanks.')">Event Handler:</h1>
+    <button onclick="alert('Thank You so Much!'); clickMe()">Click Me</button>
+
+    <ul>
+        <li><button id="button1" style="background-color: lightblue">Button-1</button></li>
+        <li><button id="button2" style="background-color: greenyellow">Button-2</button></li>
+        <li><button id="button3" style="background-color: aqua">Button-3</button></li>
+        <li><button id="button4" style="background-color: rgb(221, 134, 134)">Button-4</button></li>
+    </ul>
+
+    <div id="container">
+        <h1>List Delete And Add</h1>
+        <ul id="myList">
+            <li class="item">Lorem ipsum dolor sit.</li>
+            <li class="item">Eius nobis blanditiis delectus.</li>
+            <li class="item">Sequi debitis numquam architecto?</li>
+            <li class="item">Provident laudantium doloremque quia.</li>
+            <li class="item">Deleniti, consectetur? Nulla, eos!</li>
+        </ul>
+        <button id="newItem">ADD List</button>
+    </div>
+
+    <script>
+        function clickMe(){
+            console.log("Thank You so Much Too!")
+        }
+
+        // backgroundColor
+        const button1 = document.getElementById("button1");
+        button1.onclick = function(){
+            document.body.style.backgroundColor = "lightblue";
+        }
+        function secondButton(){
+            document.body.style.backgroundColor = "greenyellow";
+        }
+        const button2 = document.getElementById("button2");
+        button2.onclick = secondButton;
+        const button3 = document.getElementById("button3");
+        button3.addEventListener('click', function(){
+            document.body.style.backgroundColor = "aqua";
+        });
+        function color(){
+            document.body.style.backgroundColor = "rgb(221, 134, 134)";
+        }
+        const button4 = document.getElementById("button4").addEventListener('click',color);
+
+        // var items = document.getElementsByClassName("item");
+        // for(let i = 0; i<items.length; i++){
+        //     var item = items[i];
+        //     item.addEventListener('click', function(event){
+        //         console.log(this, event.target, event.target.parentNode);
+        //         event.target.parentNode.removeChild(event.target)   //event.target = this
+        //     })
+        // }
+        document.getElementById('myList').addEventListener('click', function (event){
+            console.log(this,event.target);
+            event.target.parentElement.removeChild(event.target);
+        })
+        var newItem = document.getElementById('newItem').addEventListener('click',function(){
+            var itemParent = document.getElementById('myList');
+            var newChild = document.createElement('li');
+            newChild.innerHTML = "Lorem Ipsum Created New";
+            itemParent.appendChild(newChild);
+        })
+
+
+    </script>
+</body>
+</html>
